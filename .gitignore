@@ -21,3 +21,7 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+/.idea/FireArcade.iml
+/.idea/git_toolbox_prj.xml
+/.idea/modules.xml
+/.idea/vcs.xml
