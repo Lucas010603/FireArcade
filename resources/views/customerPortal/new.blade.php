@@ -11,7 +11,6 @@
 <div class="form-container">
     <div class="form-title">Reparatie aanvraag</div>
     <form action="#" method="post">
-        @method('post')
         <label class="form-label" for="serienummer">Serienummer product:</label>
         <input class="form-input" type="text" id="serienummer" name="serienummer" required>
         <label class="form-label" for="postcode">Postcode:</label>
