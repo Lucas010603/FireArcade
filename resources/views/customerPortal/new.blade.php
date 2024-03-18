@@ -10,13 +10,16 @@
 <body>
 <div class="form-container">
     <div class="form-title">Reparatie aanvraag</div>
-    <form action="#" method="post">
+    <form method="post" action="{{route('customerportal.api.ticket.store')}}" data-handle-errors>
+        @csrf
+        @method('post')
         <label class="form-label" for="serienummer">Serienummer product:</label>
-        <input class="form-input" type="text" id="serienummer" name="serienummer" required>
+        <input class="form-input" type="text" id="serienummer" name="serial" placeholder="1234566789"
+               data-error-message="Geef een geldig Serienummer op">
         <label class="form-label" for="postcode">Postcode:</label>
-        <input class="form-input" type="text" id="postcode" name="postcode" required>
+        <input class="form-input" type="text" id="postcode" name="postal_code">
         <label class="form-label" for="probleembeschrijving">Probleembeschrijving:</label>
-        <textarea class="form-textarea" id="probleembeschrijving" name="probleembeschrijving" required></textarea>
+        <textarea class="form-textarea" id="probleembeschrijving" name="description"></textarea>
         <button class="form-button" type="submit">Versturen</button>
     </form>
 </div>
