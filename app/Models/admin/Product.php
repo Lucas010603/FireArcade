@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\admin;
 
+use App\Models\customer\Ticket;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model

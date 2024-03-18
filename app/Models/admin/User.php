@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model

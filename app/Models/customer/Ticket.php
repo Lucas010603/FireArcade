@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\customer;
 
+use App\Models\admin\Product;
+use App\Models\admin\UserRole;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('city', 100);
             $table->string('postal_code', 100);
             $table->string('bank_account_number', 100);
+            $table->string('phone_number', 100)->nullable();
             $table->boolean('active')->default(true);
         });
     }
