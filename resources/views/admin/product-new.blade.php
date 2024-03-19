@@ -1,0 +1,30 @@
+@extends("components-maikel.admin-main")
+
+@section("content")
+    <h1>Kamer Toevoegen</h1>
+    <form method="post" action="{{ route('adminportal.api.product.store') }}" data-handle-errors>
+        @csrf
+        @method('post')
+        <div class="mb-3">
+            <label class="form-label">Productnaam</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Fire Arcade"
+                   data-error-message="Geef een productnaam op">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Serienummer</label>
+            <input type="text" class="form-control" id="number" name="serial" placeholder="123456789"
+                   data-error-message="Geef een geldige kamernaam op">
+        </div>
+        <div class="mb-3">
+            <input type="submit" class="btn btn-primary" value="Opslaan">
+        </div>
+    </form>
+    @if(count($errors))
+        <div id="form-submit-fail" class="alert alert-danger" role="alert">
+            Arcade kast toevoegen mislukt. probeer het nog eens.
+        </div>
+    @endif
+@endsection
+
+@section('scripts')
+@endsection
