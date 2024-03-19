@@ -24,8 +24,13 @@
         @error('validation')
         <div class="alert alert-danger">Het product met deze postcode kon niet gevonden worden</div>
         @enderror
+        @if($errors->any() && !$errors->has('validation'))
+            <div id="form-submit-fail" class="alert alert-danger" role="alert">
+                Reparatieticket aanmaken mislukt. Probeer opnieuw.
+            </div>
+        @endif
         @if(session('success'))
-            <div class="alert alert-success">Reparatie ticket is successvol aangemaakt</div>
+            <div class="alert alert-success">Uw probleem is successvol doorgegeven aan FireArcade</div>
         @endif
     </form>
 </div>
