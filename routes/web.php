@@ -15,6 +15,11 @@ use \App\Http\Controllers\sales\TicketController;
 |
 */
 
+Route::put('/test', function () {
+    return 'Hello World';
+});
+
+
 Route::get('/', [AuthController::class, 'index'])->name("login");
 Route::post('/sign-out', [AuthController::class, 'signOut'])->name("sign-out");
 
@@ -29,6 +34,8 @@ Route::prefix('sales')->group(function () {
         Route::prefix('customer')->group(function () {
             Route::get('/', [CustomerController::class, 'index'])->name("sales.customer.index");
             Route::get('/new', [CustomerController::class, 'new'])->name("sales.customer.new");
+            Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name("sales.customer.edit");
+
         });
 
         Route::prefix('ticket')->group(function () {
@@ -42,6 +49,7 @@ Route::prefix('sales')->group(function () {
             Route::prefix('customer')->group(function () {
                 Route::post('/store', [CustomerController::class, 'store'])->name("sales.api.customer.store");
                 Route::put('/delete/{id}', [CustomerController::class, 'delete'])->name("sales.api.customer.delete");
+                Route::post('/edit/{id}', [CustomerController::class, 'update'])->name("sales.api.customer.update");
             });
             Route::prefix('ticket')->group(function () {
                 Route::post('/store', [TicketController::class, 'store'])->name("sales.api.ticket.store");

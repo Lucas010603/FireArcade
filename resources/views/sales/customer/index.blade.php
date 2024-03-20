@@ -25,11 +25,13 @@
                     <td>{{ $customer->phone_number }}</td>
                     <td>{{ $customer->postal_code }}</td>
                     <td>
-                    <span class="bank-account" onclick="toggleBankAccount({{$customer->id}})"  data-account="{{ $customer->bank_account_number }}">........</span>
-                    <i class='bx bx-show-alt' id="toggleBankAccount{{$customer->id}}" onclick="toggleBankAccount({{$customer->id}})"></i>
+                        <div id="toggleBankAccount{{ $customer->id }}" class="bank-account-container" onclick="toggleBankAccount('{{ $customer->id }}')">
+                    <span class="bank-account" data-account="{{ $customer->bank_account_number }}">........</span>
+                            <i class='bx bx-show-alt'></i>
+                        </div>
                     </td>
                     <td>
-{{--                        <a href="{{ route('room.edit', ['id' => $room->id]) }}" class="btn btn-success">Bijwerken</a>--}}
+                        <a href="{{ route('sales.customer.edit', ['id' => $customer->id]) }}" class="btn btn-success">Bijwerken</a>
                         <a class="btn btn-danger" onclick="deleteCustomer({{$customer->id}})">Verwijderen</a>
                     </td>
                 </tr>
@@ -54,15 +56,15 @@
                     console.log(error);
                 });
         }
+
         function toggleBankAccount(id) {
+            console.log(id)
             let container = $('#toggleBankAccount' + id);
-            let bankAccount = $('.bank-account');
-            console.log(bankAccount);
+            let bankAccount = container.find('.bank-account');
+            console.log(bankAccount)
             let icon = container.find('.bx');
             let accountNumber = bankAccount.data('account');
-            console.log(accountNumber)
             let dots = bankAccount.html();
-            alert(dots)
 
             if (dots === '........') {
                 bankAccount.html(accountNumber);
@@ -72,6 +74,7 @@
                 icon.removeClass('bx-hide').addClass('bx-show-alt');
             }
         }
+
     </script>
 
 @endsection

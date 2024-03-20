@@ -19,6 +19,13 @@ class CustomerController extends Controller
         return view("sales.customer.new", compact("types"));
     }
 
+    public function edit($id){
+        $customer = Customer::find($id);
+        $types = CustomerType::get();
+        return view("sales.customer.edit", compact("types", "customer"));
+    }
+
+
     public function store(Request $request){
         $validated = $request->validate([
             'type_id' => 'required',
@@ -30,6 +37,23 @@ class CustomerController extends Controller
             'phone_number' => 'nullable',
         ]);
         Customer::insert($validated);
+
+        return redirect()->route('sales.customer.index');
+    }
+
+    public function update($id, Request $request)
+    {
+        $validated = $request->validate([
+            'type_id' => 'required',
+            'full_name' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'postal_code' => 'required',
+            'bank_account_number' => 'required',
+            'phone_number' => 'nullable',
+        ]);
+
+        Customer::find($id)->update($validated);
 
         return redirect()->route('sales.customer.index');
     }
