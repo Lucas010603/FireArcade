@@ -20,17 +20,17 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $faker = Faker::create('nl_NL');
+        $rng = $faker->boolean();
 
         $customerIds = Customer::inRandomOrder()->first()->id;
 
         return [
-            'name' => $faker->word,
-            'customer_id' => $customerIds,
-//          'customer_id' =>$faker->numberBetween($customerIds, $customerIds),
+            'name' => $faker->unique()->words(rand(1, 3), true) . " Arcade Machine",
+            'customer_id' => $rng ? $customerIds : null,
             'serial' => $faker->randomNumber(7),
             'contract_start' => Carbon::now(),
             'contract_end' => Carbon::now()->addDays(120),
-            'contract' => 'test.pdf'
+            'contract' => $faker->unique()->words(1, true) . ".pdf"
         ];
     }
 }

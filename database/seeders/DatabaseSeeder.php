@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
 
 
         Customer::factory()->times(100)->create();
-        Product::factory()->times(100)->create();
+        Product::factory()->times(25)->create();
 
 //        $userRoles = [
 //            ['name' => 'beheerder'],

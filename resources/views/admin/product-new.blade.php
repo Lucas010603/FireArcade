@@ -1,7 +1,7 @@
 @extends("components-maikel.admin-main")
 
 @section("content")
-    <h1>Kamer Toevoegen</h1>
+    <h1>Product aanmaken</h1>
     <form method="post" action="{{ route('adminportal.api.product.store') }}" data-handle-errors>
         @csrf
         @method('post')

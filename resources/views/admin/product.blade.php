@@ -17,12 +17,12 @@
             <tr>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->serial }}</td>
-                <td>{{ $product->contract_start ?? "n.t.b." }}</td>
-                <td>{{ $product->contract_end ?? "n.t.b." }}</td>
+                <td>{{ $product->contract_start?->format("d-m-Y H:i") ?? "n.t.b." }}</td>
+                <td>{{ $product->contract_end?->format("d-m-Y H:i") ?? "n.t.b." }}</td>
                 <td>{{ $product->contract ?? "n.t.b." }}</td>
                     <td>
-                        <a href="" class="btn btn-success">Bijwerken</a>
-                        <a class="btn btn-danger" onclick="">Verwijderen</a>
+                        <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-success">Bijwerken</a>
+                        <a class="btn btn-danger" onclick="deleteProduct({{$product->id}})">Verwijderen</a>
                     </td>
             </tr>
         @endforeach
@@ -38,14 +38,14 @@
             });
         });
 
-        // function deleteReservation(id) {
-        //     axios.put(`/api/reservation/delete/${id}`)
-        //         .then(response => {
-        //             window.location.reload();
-        //         })
-        //         .catch(error => {
-        //
-        //         });
-        // }
+        function deleteProduct(id) {
+            axios.put(`/adminportal/api/adminportal/delete/${id}`)
+                .then(response => {
+                    window.location.reload();
+                })
+                .catch(error => {
+
+                });
+        }
     </script>
 @endsection

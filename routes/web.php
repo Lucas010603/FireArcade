@@ -33,16 +33,13 @@ Route::prefix('adminportal')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name("adminportal");
     Route::get('/product', [ProductController::class, 'index'])->name("product");
     Route::get('/new', [ProductController::class, 'new'])->name("product.new");
-//    Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name("Customer.edit");
-//    Route::get('/Customer/{status}', [CustomerController::class, 'status'])->name("Customer.status");
-//    Route::get('/delete', [CustomerController::class, 'delete'])->name("Customer.delete");
-//    Route::get('/filter', [CustomerController::class, 'filter'])->name('Customer.filter');
+    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name("product.edit");
 
     Route::prefix('api')->group(function () {
         Route::prefix('adminportal')->group(function () {
             Route::post('/store', [ProductController::class, 'store'])->name("adminportal.api.product.store");
-//            Route::post('/update/{id}', [RoomController::class, 'update'])->name("api.room.update");
-//            Route::put('/delete/{id}', [RoomController::class, 'delete'])->name("api.room.delete");
+            Route::post('/update/{id}', [ProductController::class, 'update'])->name("adminportal.api.product.update");
+            Route::put('/delete/{id}', [ProductController::class, 'delete'])->name("adminportal.api.product.delete");
         });
     });
 });
