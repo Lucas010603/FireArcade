@@ -26,11 +26,11 @@ class ProductController extends Controller
         $data = $request->validate(
             [
                 'name' => 'required',
-                'serial' => 'required',
+                'serial' => 'required|unique:product',
             ]
         );
         Product::insert($data);
-        return redirect()->route('product');
+        return redirect()->route('adminportal.product');
     }
 
     public function edit($id)
@@ -45,7 +45,7 @@ class ProductController extends Controller
         $data = $request->validate(
             [
                 'name' => 'required',
-                'serial' => 'required',
+                'serial' => 'required|unique:product',
                 'customer_id' => 'nullable',
                 'contract_start' => 'nullable',
                 'contract_end' => 'nullable'
@@ -55,7 +55,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->update($data);
 
-        return redirect()->route('product');
+        return redirect()->route('adminportal.product');
     }
 
     public function delete($id)

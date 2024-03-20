@@ -13,19 +13,19 @@
             </li>
         </a>
 
-        <a href="" class="navItem">
+        <a href="{{ route('adminportal.user.new') }}" class="navItem">
             <li class="menu-item">
                 <i class='bx bxs-calendar'></i>
                 <span>Nieuwe Gebruiker</span>
             </li>
         </a>
-        <a href="{{ route('product') }}" class="navItem">
+        <a href="{{ route('adminportal.product') }}" class="navItem">
             <li class="menu-item">
                 <i class='bx bxs-grid'></i>
                 <span>Producten</span>
             </li>
         </a>
-        <a href="{{ route('product.new') }}" class="navItem">
+        <a href="{{ route('adminportal.product.new') }}" class="navItem">
             <li class="menu-item">
                 <i class='bx bxs-add-to-queue'></i>
                 <span>Product aanmaken</span>

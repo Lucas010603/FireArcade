@@ -31,12 +31,15 @@ Route::prefix('customerportal')->group(function () {
 
 Route::prefix('adminportal')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name("adminportal");
-    Route::get('/product', [ProductController::class, 'index'])->name("product");
-    Route::get('/new', [ProductController::class, 'new'])->name("product.new");
+    Route::get('/new-user', [UserController::class, 'new'])->name("adminportal.user.new");
+    Route::get('/user', [ProductController::class, 'index'])->name("adminportal.user");
+    Route::get('/product', [ProductController::class, 'index'])->name("adminportal.product");
+    Route::get('/new', [ProductController::class, 'new'])->name("adminportal.product.new");
     Route::get('/edit/{id}', [ProductController::class, 'edit'])->name("product.edit");
 
     Route::prefix('api')->group(function () {
         Route::prefix('adminportal')->group(function () {
+            Route::post('/store-user', [UserController::class, 'store'])->name("adminportal.api.user.store");
             Route::post('/store', [ProductController::class, 'store'])->name("adminportal.api.product.store");
             Route::post('/update/{id}', [ProductController::class, 'update'])->name("adminportal.api.product.update");
             Route::put('/delete/{id}', [ProductController::class, 'delete'])->name("adminportal.api.product.delete");

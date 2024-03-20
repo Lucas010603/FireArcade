@@ -8,7 +8,7 @@ class UserRole extends Model
 {
     protected $guarded = [];
     public $timestamps = false;
-    protected $table = "user";
+    protected $table = "user_role";
 
     public function users()
     {
