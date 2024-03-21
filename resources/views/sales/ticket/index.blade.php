@@ -19,7 +19,9 @@
             <tbody>
 
             @foreach ($tickets as $ticket)
-                @php $badgeColor = $ticket->status->id == 1 ? "secondary" : ($ticket->status->id == 3 ? "success" : "primary") @endphp
+                @php
+                    $badgeColor = $ticket->status->id == 1 ? "secondary" : ($ticket->status->id == 3 ? "success" : ($ticket->status->id == 4 ? "danger" : "primary"));
+                @endphp
                 <tr>
                     <td>{{ $ticket->product->name }}</td>
                     <td>{{ $ticket->product->serial }}</td>
@@ -30,6 +32,7 @@
                     <td>{{ $ticket->created_at->format("d-m-Y H:i") }}</td>
                     <td>{{ $ticket->updated_at->format("d-m-Y H:i") }}</td>
                     <td>
+                        <a href="{{ route('sales.ticket.show', ['id' => $ticket->id]) }}" class="btn btn-success">Inzien</a>
                         <a href="{{ route('sales.ticket.show', ['id' => $ticket->id]) }}" class="btn btn-success">Inzien</a>
                     </td>
                 </tr>

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreign(['status_id'], 'ticket_ibfk_3')->references(['id'])->on('ticket_status')->onUpdate('restrict')->onDelete('restrict');
             $table->foreign(['type_id'], 'ticket_ibfk_4')->references(['id'])->on('ticket_type')->onUpdate('restrict')->onDelete('restrict');
             $table->foreign(['user_id'], 'ticket_ibfk_5')->references(['id'])->on('user')->onUpdate('set null')->onDelete('set null');
-            $table->foreign(['customer_id'], 'ticket_ibfk_6')->references(['id'])->on('customer')->onUpdate('restrict')->onDelete('restrict');
         });
     }
 

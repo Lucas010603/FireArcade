@@ -36,8 +36,5 @@ class Ticket extends Model
         return $this->hasOne(Product::class, "id", "product_id");
     }
 
-    public function customer(){
-        return $this->hasOne(Customer::class, "id", "customer_id");
-    }
 
 }

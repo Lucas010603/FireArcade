@@ -36,7 +36,6 @@ class TicketFactory extends Factory
             'type_id' => $ticketTypeId,
             'status_id' => $ticketStatusId,
             'product_id' => $productId,
-            'customer_id' => $customerId,
             'user_id' => $userId,
             'created_at' => $randomDateTime,
             'updated_at' => Carbon::parse($randomDateTime)->addDays(random_int(0,100))->addMinutes(random_int(0,1400)),

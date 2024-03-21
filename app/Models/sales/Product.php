@@ -9,6 +9,7 @@ class Product extends Model
 {
     public $timestamps = false;
     protected $table = "product";
+    protected $guarded = [];
     use HasFactory;
 
     public function customer(){

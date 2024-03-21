@@ -34,6 +34,13 @@ class TicketController extends Controller
             "customer_id" => "required",
             "description" => "nullable",
         ]);
+
+        $product = Product::find($validated["product_id"]);
+
+        $product->update([
+             "customer_id" => $validated["customer_id"]
+        ]);
+
         Ticket::insert([
             'type_id' => 1,
             'status_id' => 1,

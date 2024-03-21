@@ -15,11 +15,6 @@ use \App\Http\Controllers\sales\TicketController;
 |
 */
 
-Route::put('/test', function () {
-    return 'Hello World';
-});
-
-
 Route::get('/', [AuthController::class, 'index'])->name("login");
 Route::post('/sign-out', [AuthController::class, 'signOut'])->name("sign-out");
 

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         DB::table('ticket_status')->insert(["name" => 'open']);
         DB::table('ticket_status')->insert(["name" => 'in behandeling']);
         DB::table('ticket_status')->insert(["name" => 'afgerond']);
+        DB::table('ticket_status')->insert(["name" => 'geannuleerd']);
 
         DB::table('customer_type')->insert(["name" => 'bedrijf']);
         DB::table('customer_type')->insert(["name" => 'particulier']);
