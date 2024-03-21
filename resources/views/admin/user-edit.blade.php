@@ -8,17 +8,17 @@
         <div class="mb-3">
             <label class="form-label">Gebruikersnaam</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Fire Arcade"
-                   value="{{$user->name}}" data-error-message="Geef een productnaam op">
+                   value="{{$user->name}}" data-error-message="Geef een geldige gebruikersnaam op">
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
             <input type="text" class="form-control" id="number" name="email" placeholder="example@example.com"
-                   value="{{$user->email}}" data-error-message="Geef een geldige kamernaam op">
+                   value="{{$user->email}}" data-error-message="Geef een geldige email op">
         </div>
         <div class="mb-3">
             <label for="customer_id" class="form-label">Rol</label>
             <select  id="role" class="form-select" name="role_id" data-error-message="Selecteer een rol">
-                <option disabled value="">rollen</option>
+                <option value="">rollen</option>
                 @foreach($roles as $role)
                     <option value="{{ $role->id }}"
                             @if($user->role_id == $role->id) selected @endif>{{ $role->name }}</option>

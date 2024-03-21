@@ -28,12 +28,12 @@
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Serienummer</label>
+            <label class="form-label">Start contract</label>
             <input type="text" class="form-control" id="number" name="contract_start" placeholder="123456789"
                    value="{{$product->contract_start}}" data-error-message="Geef een geldige kamernaam op" disabled>
         </div>
         <div class="mb-3">
-            <label class="form-label">Serienummer</label>
+            <label class="form-label">einde contract</label>
             <input type="datetime-local" class="form-control" id="number" name="contract_end" placeholder="123456789"
                    value="{{$product->contract_end}}" data-error-message="Geef een geldige kamernaam op">
         </div>

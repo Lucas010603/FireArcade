@@ -45,7 +45,7 @@ class ProductController extends Controller
         $data = $request->validate(
             [
                 'name' => 'required',
-                'serial' => 'required|unique:product',
+                'serial' => 'required',
                 'customer_id' => 'nullable',
                 'contract_start' => 'nullable',
                 'contract_end' => 'nullable'

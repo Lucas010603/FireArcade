@@ -15,7 +15,7 @@
 
         <a href="{{ route('adminportal.user.new') }}" class="navItem">
             <li class="menu-item">
-                <i class='bx bxs-calendar'></i>
+                <i class='bx bx-user-plus'></i>
                 <span>Nieuwe Gebruiker</span>
             </li>
         </a>
@@ -31,35 +31,29 @@
                 <span>Product aanmaken</span>
             </li>
         </a>
-        ---------------------------
+        <br>
         <a href="" class="navItem">
             <li class="menu-item">
-                <i class='bx bxs-user-plus'></i>
-                <span>TODO: Alle andere paginas toevoegen</span>
+                <i class='bx bx-user'></i>
+                <span>Klanten</span>
             </li>
         </a>
         <a href="" class="navItem">
             <li class="menu-item">
-                <i class='bx bxs-bed'></i>
-                <span>Kamers</span>
+                <i class='bx bx-user-plus'></i>
+                <span>Klant toevoegen</span>
             </li>
         </a>
             <a href="" class="navItem">
                 <li class="menu-item">
-                    <i class='bx bxs-add-to-queue'></i>
-                    <span>Kamers toevoegen</span>
+                    <i class='bx bx-shopping-bag'></i>
+                    <span>Bestellingen</span>
                 </li>
             </a>
             <a href="" class="navItem">
                 <li class="menu-item">
-                    <i class='bx bxs-user-detail'></i>
-                    <span>Medewerkers</span>
-                </li>
-            </a>
-            <a href="" class="navItem">
-                <li class="menu-item">
-                    <i class='bx bxs-user-detail'></i>
-                    <span>Medewerkers toevoegen</span>
+                    <i class='bx bx-cart-add'></i>
+                    <span>Bestelling plaatsen</span>
                 </li>
             </a>
         <li class="menu-item" onclick="signOut()">
