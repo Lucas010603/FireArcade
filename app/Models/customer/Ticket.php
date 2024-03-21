@@ -31,8 +31,8 @@ class Ticket extends Model
         return $this->hasOne(UserRole::class, 'id', 'role_id');
     }
 
-    public function customer()
-    {
-        return $this->hasOne(Customer::class, 'id', 'customer_id');
-    }
+//    public function customer()
+//    {
+//        return $this->hasOne(Customer::class, 'id', 'customer_id');
+//    }
 }
