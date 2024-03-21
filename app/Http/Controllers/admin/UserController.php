@@ -40,4 +40,34 @@ class UserController extends Controller
         User::insert($data);
         return redirect()->route('adminportal');
     }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+        $roles = UserRole::get();
+        return view("admin.user-edit", compact('user', 'roles'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $data = $request->validate(
+            [
+                'email' => 'required|email',
+                'name' => 'required',
+                'role_id' => 'required'
+            ]
+        );
+
+        $user = User::find($id);
+        $user->update($data);
+
+        return redirect()->route('adminportal');
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+        $user->update(["active" => 0]);
+        return response()->json($user);
+    }
 }

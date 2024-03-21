@@ -6,7 +6,7 @@
         @csrf
         @method('post')
         <div class="mb-3">
-            <label class="form-label">Naam</label>
+            <label class="form-label">Gebruikersnaam</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Fire Arcade"
                    data-error-message="Geef een geldige naam op">
         </div>
@@ -22,13 +22,13 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Wachtwoord bevestigen</label>
-            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="wachtwoord"
+            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="bevestig wachtwoord"
                    data-error-message="bevestig het opgegeven wachtwoord">
         </div>
         <div class="mb-3">
             <label for="customer_id" class="form-label">Rol</label>
             <select  id="role" class="form-select" name="role_id" data-error-message="Selecteer een rol">
-                <option disabled value="">rol</option>
+                <option disabled value="">rollen</option>
                 @foreach($roles as $role)
                     <option value="{{ $role->id }}" {{ $role->name == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
                 @endforeach
@@ -41,19 +41,7 @@
     </form>
     @if(count($errors))
         <div id="form-submit-fail" class="alert alert-danger" role="alert">
-            Arcade kast toevoegen mislukt. probeer het nog eens.
+            Gebruiker toevoegen mislukt. probeer het nog eens.
         </div>
     @endif
-
-    <script>
-        // function deleteReservation(id) {
-        //     axios.put(`/api/reservation/delete/${id}`)
-        //         .then(response => {
-        //             window.location.reload();
-        //         })
-        //         .catch(error => {
-        //
-        //         });
-        // }
-    </script>
 @endsection
