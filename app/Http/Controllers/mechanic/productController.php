@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\mechanic;
 
 use App\Http\Controllers\Controller;
-use App\Models\product;
+use App\Models\mechanic\product;
 use Illuminate\Http\Request;
 
 class productController extends Controller
@@ -14,32 +14,28 @@ class productController extends Controller
         return view('mechanic.product.index', ['products' => $product]);
     }
 
-    public function new()
-    {
-        return view('mechanic.product.new');
-    }
-
-    public function edit($id)
+    public function view($id)
     {
         $product = product::find($id);
-        return view('mechanic.product.edit', ['product' => $product]);
+        return view('mechanic.product.view', ['product' => $product]);
     }
 
 
     public function store(Request $request)
     {
-        $data = $request->validate(['serial' => 'required']
+        $data = $request->validate(['serial' => 'required','name' => 'required']
         );
 
-        $newProduct = product::insert($data);
-        return redirect()->route('product');
+        product::insert($data);
+        return redirect()->route('mechanic.product');
     }
 
     public function update($id, Request $request)
     {
         $data = $request->validate([
 
-            'serial' => 'numeric',
+            'serial' => 'required',
+            'name' => 'required',
             'contract_start' => 'nullable',
             'contract_end' => 'nullable'
 
@@ -48,7 +44,7 @@ class productController extends Controller
         $product = product::find($id);
         $product->update($data);
 
-        return redirect()->route('product');
+        return redirect()->route('mechanic.product');
     }
 
     public function delete($id)

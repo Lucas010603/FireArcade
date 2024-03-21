@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\mechanic;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ticket extends Model
+class UserRole extends Model
 {
     protected $guarded = [];
     public $timestamps = false;
-    protected $table = "ticket";
+    protected $table = "user_role";
+    use HasFactory;
 }

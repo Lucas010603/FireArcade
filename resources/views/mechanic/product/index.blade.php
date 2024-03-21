@@ -6,10 +6,10 @@
         <thead>
 
         <tr>
-            <th scope="col">id</th>
-            <th scope="col">serial</th>
-            <th scope="col">contract_start</th>
-            <th scope="col">contract_end</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Serie nummer</th>
+            <th scope="col">contract start</th>
+            <th scope="col">contract eind</th>
             <th scope="col">Actie</th>
 
         </tr>
@@ -17,14 +17,14 @@
         <tbody>
         @foreach ($products as $product)
             <tr>
-                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->name }}</td>
                                 <td>{{ $product->serial }}</td>
                                 <td>{{ $product->contract_start }}</td>
                                 <td>{{ $product->contract_end }}</td>
 
                                 <td>
-                                    <a href="{{ route('product.edit', $product->id) }}" class="btn btn-success">Bijwerken</a>
-                                    <a class="btn btn-danger" onclick="deleteProduct({{$product->id}})">Verwijderen</a>
+                                    <a href="{{ route('mechanic.product.view', $product->id) }}" class="btn btn-success">Inzien</a>
+
                                 </td>
             </tr>
         @endforeach
@@ -39,16 +39,6 @@
                 }
             });
         });
-
-        function deleteProduct(id) {
-            axios.put(`/mechanic/api/product/delete/${id}`)
-                .then(response => {
-                    window.location.reload();
-                })
-                .catch(error => {
-                    console.log(error)
-                });
-        }
     </script>
 @endsection
 
