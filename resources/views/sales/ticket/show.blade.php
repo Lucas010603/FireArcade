@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Klant</label>
-            <input type="text" disabled class="form-control" value="{{$ticket->customer->full_name}}">
+            <input type="text" disabled class="form-control" value="{{$ticket->product->customer?->full_name}}">
         </div>
         <div class="mb-3">
             <label class="form-label">Opmerking</label>

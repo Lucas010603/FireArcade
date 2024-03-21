@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
+    protected $guarded = [];
     protected $table = "ticket";
     protected $dates = ['created_at', 'updated_at'];
     use HasFactory;

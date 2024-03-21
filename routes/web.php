@@ -48,6 +48,7 @@ Route::prefix('sales')->group(function () {
             });
             Route::prefix('ticket')->group(function () {
                 Route::post('/store', [TicketController::class, 'store'])->name("sales.api.ticket.store");
+                Route::put('/cancel/{id}', [TicketController::class, 'cancel'])->name("sales.api.ticket.cancel");
             });
         });
     });

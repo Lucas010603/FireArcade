@@ -28,6 +28,14 @@ class TicketController extends Controller
         return view("sales.ticket.show", compact("ticket"));
     }
 
+    public function cancel($id){
+        $ticket = Ticket::find($id);
+        if($ticket->status_id != 1){ return; }
+        $ticket->update([
+            "status_id" => 4,
+        ]);
+    }
+
     public function store(Request $request){
         $validated = $request->validate([
             "product_id" => "required",
@@ -35,17 +43,15 @@ class TicketController extends Controller
             "description" => "nullable",
         ]);
 
-        $product = Product::find($validated["product_id"]);
-
+        $product = Product::find($validated['product_id']);
         $product->update([
-             "customer_id" => $validated["customer_id"]
+            "customer_id" => $validated["customer_id"],
         ]);
 
         Ticket::insert([
             'type_id' => 1,
             'status_id' => 1,
             'product_id' => $validated["product_id"],
-            'customer_id' => $validated["customer_id"],
             'description' => $validated["description"] ?? "",
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

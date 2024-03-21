@@ -25,15 +25,17 @@
                 <tr>
                     <td>{{ $ticket->product->name }}</td>
                     <td>{{ $ticket->product->serial }}</td>
-                    <td>{{ $ticket->customer?->full_name }}</td>
+                    <td>{{ $ticket->product->customer?->full_name }}</td>
                     <td>{{ \Illuminate\Support\Str::limit($ticket->description, 20, '...') }}</td>
                     <td>{{ \Illuminate\Support\Str::limit($ticket->actions, 20, '...') }}</td>
                     <td><span class="badge bg-{{$badgeColor}}">{{ $ticket->status->name }}</span></td>
                     <td>{{ $ticket->created_at->format("d-m-Y H:i") }}</td>
                     <td>{{ $ticket->updated_at->format("d-m-Y H:i") }}</td>
                     <td>
-                        <a href="{{ route('sales.ticket.show', ['id' => $ticket->id]) }}" class="btn btn-success">Inzien</a>
-                        <a href="{{ route('sales.ticket.show', ['id' => $ticket->id]) }}" class="btn btn-success">Inzien</a>
+                        <a href="{{ route('sales.ticket.show', ['id' => $ticket->id]) }}" class="btn btn-primary">Inzien</a>
+                    @if($ticket->status_id == 1)
+                            <a onclick="cancelTicket({{$ticket->id}})" class="btn btn-danger">Annuleren</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach
@@ -49,6 +51,15 @@
             });
         });
 
+        function cancelTicket(id){
+            axios.put(`/sales/api/ticket/cancel/${id}`)
+                .then(response => {
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     </script>
 
 @endsection
