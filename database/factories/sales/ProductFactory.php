@@ -3,6 +3,7 @@
 namespace Database\Factories\sales;
 
 use App\Models\sales\Customer;
+use Carbon\Carbon;
 use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,14 +22,15 @@ class ProductFactory extends Factory
 
         $faker = Faker::create('nl_NL');
         $rng = $faker->boolean();
+        $randomDateTime = Faker::create()->dateTimeBetween('-3 weeks');
 
         $customer_id = Customer::inRandomOrder()->first()->id;
         return [
             'customer_id' => $rng ? $customer_id : null,
             'name' => $faker->unique()->words(rand(1, 3), true) . " Arcade Machine",
             'serial' => $faker->numberBetween(),
-            'contract_start' => $faker->dateTime,
-            'contract_end' => $faker->dateTime,
+            'contract_start' => $randomDateTime,
+            'contract_end' => Carbon::parse($randomDateTime)->addDays(random_int(0,100))->addMinutes(random_int(0,1400)),
             'contract' => $faker->filePath(),
             'active' => 1,
         ];

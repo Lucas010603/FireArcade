@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\sales\CustomerController;
 use \App\Http\Controllers\sales\TicketController;
-use App\Http\Controllers\mechanic\contractController;
-use App\Http\Controllers\mechanic\mechanicController;
-use App\Http\Controllers\mechanic\productController;
+use App\Http\Controllers\mechanic\mechanicController as MMechanicController;
+use App\Http\Controllers\mechanic\productController as MProductController;
+use App\Http\Controllers\Mechanic\ticketController as MTicketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,37 +60,37 @@ Route::prefix('sales')->group(function () {
 
 
 Route::prefix('mechanic')->group(function () {
-    Route::get('/', [ticketController::class, 'index'])->name("ticket");
+    Route::get('/', [MTicketController::class, 'index'])->name("ticket");
 
-    Route::get('/edit/{id}', [mechanicController::class, 'edit'])->name("mechanic.edit");
-    Route::get('/delete', [mechanicController::class, 'delete'])->name("mechanic.delete");
+    Route::get('/edit/{id}', [MMechanicController::class, 'edit'])->name("mechanic.edit");
+    Route::get('/delete', [MMechanicController::class, 'delete'])->name("mechanic.delete");
 
     Route::prefix('ticket')->group(function () {
-        Route::get('/', [ticketController::class, 'index'])->name("mechanic.ticket");
-        Route::get('/personal', [ticketController::class, 'personal'])->name("mechanic.personal");
-        Route::get('/edit/{id}', [ticketController::class, 'edit'])->name("mechanic.ticket.edit");
+        Route::get('/', [MTicketController::class, 'index'])->name("mechanic.ticket");
+        Route::get('/personal', [MTicketController::class, 'personal'])->name("mechanic.personal");
+        Route::get('/edit/{id}', [MTicketController::class, 'edit'])->name("mechanic.ticket.edit");
     });
 
 
 
     Route::prefix('product')->group(function () {
-        Route::get('/', [productController::class, 'index'])->name("mechanic.product");
-        Route::get('/view/{id}', [productController::class, 'view'])->name("mechanic.product.view");
+        Route::get('/', [MProductController::class, 'index'])->name("mechanic.product");
+        Route::get('/view/{id}', [MProductController::class, 'view'])->name("mechanic.product.view");
     });
 
     Route::prefix('api')->group(function () {
         Route::prefix('product')->group(function () {
-            Route::post('/store', [productController::class, 'store'])->name("mechanic.api.product.store");
-            Route::put('/delete/{id}', [productController::class, 'delete'])->name("mechanic.api.product.delete");
-            Route::post('/update/{id}', [productController::class, 'update'])->name("mechanic.api.product.update");
+            Route::post('/store', [MProductController::class, 'store'])->name("mechanic.api.product.store");
+            Route::put('/delete/{id}', [MProductController::class, 'delete'])->name("mechanic.api.product.delete");
+            Route::post('/update/{id}', [MProductController::class, 'update'])->name("mechanic.api.product.update");
         });
 
         Route::prefix('ticket')->group(function () {
 
-            Route::put('/delete/{id}', [ticketController::class, 'delete'])->name("mechanic.api.ticket.delete");
-            Route::post('/update/{id}', [ticketController::class, 'update'])->name("mechanic.api.ticket.update");
-            Route::post('/accept/{id}', [ticketController::class, 'accept'])->name("mechanic.api.ticket.accept");
-            Route::post('/finnish/{id}', [ticketController::class, 'finnish'])->name("mechanic.api.ticket.finnish");
+            Route::put('/delete/{id}', [MTicketController::class, 'delete'])->name("mechanic.api.ticket.delete");
+            Route::post('/update/{id}', [MTicketController::class, 'update'])->name("mechanic.api.ticket.update");
+            Route::post('/accept/{id}', [MTicketController::class, 'accept'])->name("mechanic.api.ticket.accept");
+            Route::post('/finnish/{id}', [MTicketController::class, 'finnish'])->name("mechanic.api.ticket.finnish");
         });
     });
 });
