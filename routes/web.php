@@ -7,7 +7,6 @@ use \App\Http\Controllers\sales\TicketController;
 use App\Http\Controllers\mechanic\contractController;
 use App\Http\Controllers\mechanic\mechanicController;
 use App\Http\Controllers\mechanic\productController;
-use App\Http\Controllers\mechanic\ticketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
