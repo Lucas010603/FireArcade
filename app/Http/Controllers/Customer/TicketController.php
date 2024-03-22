@@ -31,7 +31,7 @@ class TicketController extends Controller
                 'type_id' => 2,
                 'status_id' => 1,
                 'product_id' => $product->id,
-                'customer_id' => $customer->id,
+//                'customer_id' => $customer->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'description' => $data['description']

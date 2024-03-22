@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('type_id')->index('type_id');
             $table->integer('status_id')->index('status_id');
             $table->integer('product_id')->index('product_id');
-            $table->integer('customer_id')->nullable()->index('customer_id');
             $table->integer('user_id')->nullable()->index('user_id');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');

@@ -13,7 +13,7 @@
         <div class="mb-3">
             <label class="form-label">Serienummer</label>
             <input type="text" class="form-control" id="number" name="serial" placeholder="123456789"
-                   data-error-message="Geef een geldige kamernaam op">
+                   data-error-message="Geef een geldig serienummer op">
         </div>
         <div class="mb-3">
             <input type="submit" class="btn btn-primary" value="Opslaan">

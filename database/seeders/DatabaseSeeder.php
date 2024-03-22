@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\customer\Customer;
 use App\Models\admin\Product;
+use App\Models\admin\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -55,6 +56,7 @@ class DatabaseSeeder extends Seeder
 
         Customer::factory()->times(100)->create();
         Product::factory()->times(25)->create();
+        User::factory()->times(10)->create();
 
 //        $userRoles = [
 //            ['name' => 'beheerder'],
