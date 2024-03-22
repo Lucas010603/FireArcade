@@ -32,30 +32,50 @@
             </li>
         </a>
         <br>
-        <a href="" class="navItem">
+        <a href="{{ route('sales.customer.index') }}" class="navItem">
             <li class="menu-item">
-                <i class='bx bx-user'></i>
+                <i class='bx bx-user'></i> <!-- Represents users/customers -->
                 <span>Klanten</span>
             </li>
         </a>
-        <a href="" class="navItem">
+        <a href="{{ route('sales.customer.new') }}" class="navItem">
             <li class="menu-item">
                 <i class='bx bx-user-plus'></i>
                 <span>Klant toevoegen</span>
             </li>
         </a>
-            <a href="" class="navItem">
-                <li class="menu-item">
-                    <i class='bx bx-shopping-bag'></i>
-                    <span>Bestellingen</span>
-                </li>
-            </a>
-            <a href="" class="navItem">
-                <li class="menu-item">
-                    <i class='bx bx-cart-add'></i>
-                    <span>Bestelling plaatsen</span>
-                </li>
-            </a>
+        <a href="{{ route('sales.ticket.index') }}" class="navItem">
+            <li class="menu-item">
+                <i class='bx bx-shopping-bag'></i>
+                <span>Bestellingen</span>
+            </li>
+        </a>
+        <a href="{{ route('sales.ticket.new') }}" class="navItem">
+            <li class="menu-item">
+                <i class='bx bx-cart-add'></i>
+                <span>Bestelling plaatsen</span>
+            </li>
+        </a>
+        <br>
+        <br>
+        <a href="{{ route('mechanic.ticket') }}" class="navItem">
+            <li class="menu-item">
+                <i class='bx bxs-dashboard'></i>
+                <span>Ticket overzicht</span>
+            </li>
+        </a>
+        <a href="{{ route('mechanic.product') }}" class="navItem">
+            <li class="menu-item">
+                <i class='bx bxs-add-to-queue'></i>
+                <span>product overzicht</span>
+            </li>
+        </a>
+        <a href="{{ route('mechanic.personal') }}" class="navItem">
+            <li class="menu-item">
+                <i class='bx bxs-add-to-queue'></i>
+                <span>Mijn tickets</span>
+            </li>
+        </a>
         <li class="menu-item" onclick="signOut()">
             <i class="fas fa-sign-out-alt"></i>
             <span>Uitloggen</span>
