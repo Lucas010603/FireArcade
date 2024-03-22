@@ -31,9 +31,21 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('user')->insert([
-            'name' => 'beheerder',
+            'name' => 'verkoop medewerker',
             'role_id' => '2',
             'email' => 'medewerker@test.com',
+            'password' => Hash::make("test")
+        ]);
+        DB::table('user')->insert([
+            'name' => 'beheerder',
+            'role_id' => '1',
+            'email' => 'beheerder@test.com',
+            'password' => Hash::make("test")
+        ]);
+        DB::table('user')->insert([
+            'name' => 'monteur',
+            'role_id' => '3',
+            'email' => 'monteur@test.com',
             'password' => Hash::make("test")
         ]);
         User::factory()->times(100)->create();
