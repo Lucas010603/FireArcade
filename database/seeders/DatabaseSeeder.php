@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\customer\Customer;
+use App\Models\admin\Product;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -44,6 +45,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('product')->insert([
             'customer_id' => 1,
+            'name' => 'Arcade Cabinet',
             'serial' => '1234567A',
             'contract_start' => Carbon::now(),
             'contract_end' => Carbon::now()->addDays(120),
@@ -51,7 +53,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        Customer::factory()->times(5)->create();
+        Customer::factory()->times(100)->create();
+        Product::factory()->times(25)->create();
 
 //        $userRoles = [
 //            ['name' => 'beheerder'],

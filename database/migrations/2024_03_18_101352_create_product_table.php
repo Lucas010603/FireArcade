@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->integer('id', true);
             $table->integer('customer_id')->nullable()->index('product_ibfk_1');
+            $table->string('name', 50)->default('');
             $table->string('serial', 200);
             $table->dateTime('contract_start')->nullable();
             $table->dateTime('contract_end')->nullable();

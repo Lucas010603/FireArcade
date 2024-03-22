@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('user_id')->nullable()->index('user_id');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-            $table->string('description', 50)->nullable();
+            $table->text('description')->nullable();
             $table->text('actions')->nullable();
         });
     }
