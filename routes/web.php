@@ -30,8 +30,18 @@ Route::prefix('api')->group(function () {
     Route::post('/login', [AuthController::class, 'attemptLogin'])->name("attemptLogin");
 });
 
-Route::prefix('sales')->group(function () {
-    Route::middleware(['auth'])->group(function () {
+Route::prefix('customerportal')->group(function () {
+    Route::get('/', [CCustomerController::class, 'index'])->name("customerportal");
+
+    Route::prefix('api')->group(function () {
+        Route::prefix('customerportal')->group(function () {
+            Route::post('/store', [CTicketController::class, 'store'])->name("customerportal.api.ticket.store");
+        });
+    });
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('sales')->group(function () {
 
         // auth routes
         Route::prefix('customer')->group(function () {
@@ -61,75 +71,63 @@ Route::prefix('sales')->group(function () {
         });
     });
 
-});
+    Route::prefix('mechanic')->group(function () {
+        Route::get('/', [MTicketController::class, 'index'])->name("ticket");
 
-
-Route::prefix('mechanic')->group(function () {
-    Route::get('/', [MTicketController::class, 'index'])->name("ticket");
-
-    Route::get('/edit/{id}', [MMechanicController::class, 'edit'])->name("mechanic.edit");
-    Route::get('/delete', [MMechanicController::class, 'delete'])->name("mechanic.delete");
-
-    Route::prefix('ticket')->group(function () {
-        Route::get('/', [MTicketController::class, 'index'])->name("mechanic.ticket");
-        Route::get('/personal', [MTicketController::class, 'personal'])->name("mechanic.personal");
-        Route::get('/edit/{id}', [MTicketController::class, 'edit'])->name("mechanic.ticket.edit");
-    });
-
-
-
-    Route::prefix('product')->group(function () {
-        Route::get('/', [MProductController::class, 'index'])->name("mechanic.product");
-        Route::get('/view/{id}', [MProductController::class, 'view'])->name("mechanic.product.view");
-    });
-
-    Route::prefix('api')->group(function () {
-        Route::prefix('product')->group(function () {
-            Route::post('/store', [MProductController::class, 'store'])->name("mechanic.api.product.store");
-            Route::put('/delete/{id}', [MProductController::class, 'delete'])->name("mechanic.api.product.delete");
-            Route::post('/update/{id}', [MProductController::class, 'update'])->name("mechanic.api.product.update");
-        });
+        Route::get('/edit/{id}', [MMechanicController::class, 'edit'])->name("mechanic.edit");
+        Route::get('/delete', [MMechanicController::class, 'delete'])->name("mechanic.delete");
 
         Route::prefix('ticket')->group(function () {
+            Route::get('/', [MTicketController::class, 'index'])->name("mechanic.ticket");
+            Route::get('/personal', [MTicketController::class, 'personal'])->name("mechanic.personal");
+            Route::get('/edit/{id}', [MTicketController::class, 'edit'])->name("mechanic.ticket.edit");
+        });
 
-            Route::put('/delete/{id}', [MTicketController::class, 'delete'])->name("mechanic.api.ticket.delete");
-            Route::post('/update/{id}', [MTicketController::class, 'update'])->name("mechanic.api.ticket.update");
-            Route::post('/accept/{id}', [MTicketController::class, 'accept'])->name("mechanic.api.ticket.accept");
-            Route::post('/finnish/{id}', [MTicketController::class, 'finnish'])->name("mechanic.api.ticket.finnish");
+
+
+        Route::prefix('product')->group(function () {
+            Route::get('/', [MProductController::class, 'index'])->name("mechanic.product");
+            Route::get('/view/{id}', [MProductController::class, 'view'])->name("mechanic.product.view");
+        });
+
+        Route::prefix('api')->group(function () {
+            Route::prefix('product')->group(function () {
+                Route::post('/store', [MProductController::class, 'store'])->name("mechanic.api.product.store");
+                Route::put('/delete/{id}', [MProductController::class, 'delete'])->name("mechanic.api.product.delete");
+                Route::post('/update/{id}', [MProductController::class, 'update'])->name("mechanic.api.product.update");
+            });
+
+            Route::prefix('ticket')->group(function () {
+
+                Route::put('/delete/{id}', [MTicketController::class, 'delete'])->name("mechanic.api.ticket.delete");
+                Route::post('/update/{id}', [MTicketController::class, 'update'])->name("mechanic.api.ticket.update");
+                Route::post('/accept/{id}', [MTicketController::class, 'accept'])->name("mechanic.api.ticket.accept");
+                Route::post('/finnish/{id}', [MTicketController::class, 'finnish'])->name("mechanic.api.ticket.finnish");
+            });
         });
     });
-});
 
-Route::prefix('customerportal')->group(function () {
-    Route::get('/', [CustomerController::class, 'index'])->name("customerportal");
-
-    Route::prefix('api')->group(function () {
-        Route::prefix('customerportal')->group(function () {
-            Route::post('/store', [TicketController::class, 'store'])->name("customerportal.api.ticket.store");
-        });
-    });
-});
-
-
-Route::prefix('adminportal')->group(function () {
-    Route::get('/', [UserController::class, 'index'])->name("adminportal");
+    Route::prefix('adminportal')->group(function () {
+        Route::get('/', [AUserController::class, 'index'])->name("adminportal");
 //    Route::get('/user', [UserController::class, 'index'])->name("adminportal.user");
-    Route::get('/new-user', [UserController::class, 'new'])->name("adminportal.user.new");
-    Route::get('/edit-user/{id}', [UserController::class, 'edit'])->name("adminportal.user.edit");
-    //----------------------------------------------------------------------------------------------
-    Route::get('/product', [ProductController::class, 'index'])->name("adminportal.product");
-    Route::get('/new', [ProductController::class, 'new'])->name("adminportal.product.new");
-    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name("product.edit"); // TODO: Change route name to correct naming convention
+        Route::get('/new-user', [AUserController::class, 'new'])->name("adminportal.user.new");
+        Route::get('/edit-user/{id}', [AUserController::class, 'edit'])->name("adminportal.user.edit");
+        //----------------------------------------------------------------------------------------------
+        Route::get('/product', [AProductController::class, 'index'])->name("adminportal.product");
+        Route::get('/new', [AProductController::class, 'new'])->name("adminportal.product.new");
+        Route::get('/edit/{id}', [AProductController::class, 'edit'])->name("product.edit"); // TODO: Change route name to correct naming convention
 
-    Route::prefix('api')->group(function () {
-        Route::prefix('adminportal')->group(function () {
-            Route::post('/store-user', [UserController::class, 'store'])->name("adminportal.api.user.store");
-            Route::post('/update-user/{id}', [UserController::class, 'update'])->name("adminportal.api.user.update");
-            Route::put('/delete-user/{id}', [UserController::class, 'delete'])->name("adminportal.api.user.delete");
+        Route::prefix('api')->group(function () {
+            Route::prefix('adminportal')->group(function () {
+                Route::post('/store-user', [AUserController::class, 'store'])->name("adminportal.api.user.store");
+                Route::post('/update-user/{id}', [AUserController::class, 'update'])->name("adminportal.api.user.update");
+                Route::put('/delete-user/{id}', [AUserController::class, 'delete'])->name("adminportal.api.user.delete");
 
-            Route::post('/store', [ProductController::class, 'store'])->name("adminportal.api.product.store");
-            Route::post('/update/{id}', [ProductController::class, 'update'])->name("adminportal.api.product.update");
-            Route::put('/delete/{id}', [ProductController::class, 'delete'])->name("adminportal.api.product.delete");
+                Route::post('/store', [AProductController::class, 'store'])->name("adminportal.api.product.store");
+                Route::post('/update/{id}', [AProductController::class, 'update'])->name("adminportal.api.product.update");
+                Route::put('/delete/{id}', [AProductController::class, 'delete'])->name("adminportal.api.product.delete");
+            });
         });
     });
 });
+
