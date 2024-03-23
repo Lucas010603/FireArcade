@@ -37,3 +37,11 @@
         width: 70%;
     }
 }
+
+.table{
+    font-family: Verdana;
+}
+
+#roomTable_paginate, #dataTables_info, #roomTable_length{
+    font-family: Verdana;
+}

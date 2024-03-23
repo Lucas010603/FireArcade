@@ -23,7 +23,6 @@ class ticketController extends Controller
 
     public function personal()
     {
-        Auth::login(User::where('role_id',3)->first());
         $user = Auth::user();
 
         $tickets = Ticket::where('user_id', $user->id)->with('status', 'type', 'user', 'product.customer')->get();
@@ -68,7 +67,6 @@ class ticketController extends Controller
     }
 
     public function accept($id){
-        Auth::login(User::where('role_id',3)->first());
 
       $ticket = ticket::find($id);
 

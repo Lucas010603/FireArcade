@@ -1,4 +1,3 @@
-<link href="{{ asset('public_sales/css/sidebar.css') }}" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <nav class="vertical-menu-wrapper">

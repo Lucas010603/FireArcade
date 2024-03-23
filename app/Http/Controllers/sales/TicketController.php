@@ -46,6 +46,9 @@ class TicketController extends Controller
         $product = Product::find($validated['product_id']);
         $product->update([
             "customer_id" => $validated["customer_id"],
+            "contract_start" => Carbon::now(),
+            "contract_end" => $request->extended_warenty ? Carbon::now()->addDays(730) : Carbon::now()->addDays(365),
+            "contract" => "test",
         ]);
 
         Ticket::insert([

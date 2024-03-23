@@ -24,7 +24,10 @@
                 <span>Mijn tickets</span>
             </li>
         </a>
-
+        <li class="menu-item" onclick="signOut()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Uitloggen</span>
+        </li>
 
 
     </ul>
@@ -32,4 +35,16 @@
 <div class="content-wrapper">
     @yield("content")
 </div>
+<script>
+    function signOut() {
+        axios.post('{{ route("sign-out") }}')
+            .then(response => {
+                window.location.href = '{{ route("login") }}';
+            })
+            .catch(error => {
+                // Handle error
+                console.error('Error signing out:', error);
+            });
+    }
+</script>
 

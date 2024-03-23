@@ -23,7 +23,7 @@ class CheckUserRole
         }
         $role = str_replace('-', ' ', $role);
         if (!Auth::check() || $currentRole != $role) {
-            abort(403, 'Unauthorized action.');
+            return redirect()->route("login");
         }
 
         return $next($request);

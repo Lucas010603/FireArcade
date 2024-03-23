@@ -17,7 +17,12 @@ class AuthController extends Controller
     public function index()
     {
         if (auth()->check()) {
-            return redirect()->route('sales.customer.index');
+            return match (Auth::user()->role->id) {
+                1 => redirect()->route('adminportal'),
+                2 => redirect()->route('sales.customer.index'),
+                3 => redirect()->route('ticket'),
+                default => redirect()->back()->withErrors(['login_error' => 'E-mail of wachtwoord is onjuist.']),
+            };
         }
         return view("login");
     }
@@ -28,16 +33,12 @@ class AuthController extends Controller
         $password = $request->input('password');
 
         if (Auth::attempt(['email' => $email, 'password' => $password, 'active' => 1])) {
-            switch (Auth::user()->role->id) {
-                case 1:
-                    return redirect()->route('adminportal');
-                case 2:
-                    return redirect()->route('sales.customer.index');
-                case 3:
-                    return redirect()->route('ticket');
-                default:
-                    return redirect()->back()->withErrors(['login_error' => 'E-mail of wachtwoord is onjuist.']);
-            }
+            return match (Auth::user()->role->id) {
+                1 => redirect()->route('adminportal'),
+                2 => redirect()->route('sales.customer.index'),
+                3 => redirect()->route('ticket'),
+                default => redirect()->back()->withErrors(['login_error' => 'E-mail of wachtwoord is onjuist.']),
+            };
 
         } else {
             return redirect()->back()->withErrors(['login_error' => 'E-mail of wachtwoord is onjuist.']);

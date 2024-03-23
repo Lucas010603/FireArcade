@@ -19,7 +19,11 @@
 <div class="red-header">
     <div class="logo">FireArcade</div>
 </div>
-@include("sales.components.sidebar")
+@if(Auth::user()->role->name == "beheerder")
+    @include("components-maikel.sidebar")
+@else
+    @include("sales.components.sidebar")
+@endif
 @yield('scripts')
 <script>
 

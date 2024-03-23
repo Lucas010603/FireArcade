@@ -1,4 +1,3 @@
-<link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <nav class="vertical-menu-wrapper">
@@ -31,7 +30,7 @@
                 <span>Product aanmaken</span>
             </li>
         </a>
-        <br>
+        <hr>
         <a href="{{ route('sales.customer.index') }}" class="navItem">
             <li class="menu-item">
                 <i class='bx bx-user'></i> <!-- Represents users/customers -->
@@ -56,8 +55,7 @@
                 <span>Bestelling plaatsen</span>
             </li>
         </a>
-        <br>
-        <br>
+        <hr>
         <a href="{{ route('mechanic.ticket') }}" class="navItem">
             <li class="menu-item">
                 <i class='bx bxs-dashboard'></i>
@@ -86,14 +84,14 @@
     @yield("content")
 </div>
 <script>
-    {{--function signOut() {--}}
-    {{--    axios.post('{{ route("sign-out") }}')--}}
-    {{--        .then(response => {--}}
-    {{--            window.location.href = '{{ route("login") }}';--}}
-    {{--        })--}}
-    {{--        .catch(error => {--}}
-    {{--            // Handle error--}}
-    {{--            console.error('Error signing out:', error);--}}
-    {{--        });--}}
-    {{--}--}}
+    function signOut() {
+        axios.post('{{ route("sign-out") }}')
+            .then(response => {
+                window.location.href = '{{ route("login") }}';
+            })
+            .catch(error => {
+                // Handle error
+                console.error('Error signing out:', error);
+            });
+    }
 </script>
