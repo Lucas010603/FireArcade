@@ -1,5 +1,4 @@
 @extends("sales.components.main")
-
 @section("content")
     <h1>Bestelling(ticket) Toevoegen</h1>
     <form method="post" action="{{route('sales.api.ticket.store')}}" data-handle-errors>
@@ -24,6 +23,10 @@
         <div class="mb-3">
             <label class="form-label">Opmerking</label>
             <textarea type="text" class="form-control" id="description" name="description" placeholder="Opmerking"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="extended_warenty" >Verlengde garantie</label>
+            <input id="extende_warenty" name="extended_warenty" type="checkbox" class="btn btn-primary">
         </div>
         <div class="mb-3">
             <input type="submit" class="btn btn-primary" value="Opslaan">
