@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::where('active', 1)->get();
+        $products = Product::with('customer')->where('active', 1)->get();
         return view('admin.product', compact('products'));
     }
 
@@ -27,6 +27,11 @@ class ProductController extends Controller
             [
                 'name' => 'required',
                 'serial' => 'required|unique:product',
+            ],
+            [
+               'name.required' => "Vul een geldige product naam in",
+               'serial.required' => "Vul een geldig serienummer in",
+               'serial.unique' => "Het gekozen serienummer bestaat al"
             ]
         );
         Product::insert($data);
@@ -42,17 +47,34 @@ class ProductController extends Controller
 
     public function update($id, Request $request)
     {
-        $data = $request->validate(
-            [
-                'name' => 'required',
-                'serial' => 'required',
-                'customer_id' => 'nullable',
-                'contract_start' => 'nullable',
-                'contract_end' => 'nullable'
-            ]
-        );
+        $product = Product::with('customer')->find($id);
+        if($product->customer){
+            $data = $request->validate(
+                [
+                    'name' => 'required',
+                    'serial' => 'required',
+                    'customer_id' => 'required',
+                    'contract_end' => 'required'
+                ],[
+                    'name.required' => 'Kies een naam',
+                    'serial.required' => 'Kies een Serienummer',
+                    'customer_id.required' => 'Selecteer een klant',
+                    'contract_end.required' => 'Selecteer een eind datum voor het contract'
+                ]
+            );
+        }else{
+            $data = $request->validate(
+                [
+                    'name' => 'required',
+                    'serial' => 'required',
+                ],[
+                    'name.required' => 'Kies een naam',
+                    'serial.required' => 'Kies een Serienummer',
+                ]
+            );
+        }
 
-        $product = Product::find($id);
+
         $product->update($data);
 
         return redirect()->route('adminportal.product');

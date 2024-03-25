@@ -13,11 +13,12 @@
         </thead>
         <tbody>
         @foreach ($products as $product)
+
             <tr>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->serial }}</td>
-                <td>{{ $product->contract_start?->format("d-m-Y H:i") ?? "n.t.b." }}</td>
-                <td>{{ $product->contract_end?->format("d-m-Y H:i") ?? "n.t.b." }}</td>
+                <td>{{ $product->contract_start?->format("d-m-Y") ?? "n.t.b." }}</td>
+                <td>{{ $product->contract_end?->format("d-m-Y") ?? "n.t.b." }}</td>
                     <td>
                         <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-success">Bijwerken</a>
                         <a class="btn btn-danger" onclick="deleteProduct({{$product->id}})">Verwijderen</a>

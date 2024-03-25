@@ -44,7 +44,7 @@
     </form>
     @if(count($errors))
         <div id="form-submit-fail" class="alert alert-danger" role="alert">
-            Het bewerken van gegevens is mislukt, probeer nogmaals.
+            {{ $errors->first() }}
         </div>
     @endif
 @endsection

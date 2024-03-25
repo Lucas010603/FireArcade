@@ -17,6 +17,10 @@ class TicketController extends Controller
             'postal_code' => 'required',
             'serial' => 'required',
             'description' => 'required'
+        ],[
+            'postal_code.required' => 'Vul een geldige postcode in',
+            'serial.required' => 'Vul een geldig serienummer in',
+            'description.required' => 'Vul een geldige omschrijving in'
         ]);
 
         $customer = Customer::where('postal_code', $data['postal_code'])->first();

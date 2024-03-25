@@ -28,9 +28,8 @@
         @enderror
 
         @if($errors->any() && !$errors->has('validation'))
-
             <div id="form-submit-fail" class="alert alert-danger" role="alert">
-                Reparatieticket aanmaken mislukt. Probeer opnieuw.
+                {{ $errors->first() }}
             </div>
         @endif
         @if(session('success'))

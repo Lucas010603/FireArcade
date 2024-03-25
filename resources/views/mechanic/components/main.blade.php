@@ -22,7 +22,7 @@
 @if(Auth::user()->role->name == "beheerder")
     @include("components-maikel.sidebar")
 @else
-    @include("sales.components.sidebar")
+    @include("mechanic.components.sidebar")
 @endif
 @yield('scripts')
 <script>

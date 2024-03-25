@@ -12,7 +12,8 @@ class Product extends Model
     protected $guarded = [];
     use HasFactory;
 
-    public function customer(){
+    public function customer()
+    {
         return $this->hasOne(Customer::class, "id", "customer_id");
     }
 }

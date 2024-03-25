@@ -22,7 +22,7 @@
     </form>
     @if(count($errors))
         <div id="form-submit-fail" class="alert alert-danger" role="alert">
-            Product aanmaken mislukt. probeer het nog eens.
+            {{ $errors->first() }}
         </div>
     @endif
 @endsection

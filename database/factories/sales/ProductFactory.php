@@ -29,8 +29,8 @@ class ProductFactory extends Factory
             'customer_id' => $rng ? $customer_id : null,
             'name' => $faker->unique()->words(rand(1, 3), true) . " Arcade Machine",
             'serial' => $faker->numberBetween(),
-            'contract_start' => $randomDateTime,
-            'contract_end' => Carbon::parse($randomDateTime)->addDays(random_int(0,100))->addMinutes(random_int(0,1400)),
+            'contract_start' => $rng ?  $randomDateTime : null,
+            'contract_end' => $rng ?  Carbon::parse($randomDateTime)->addDays(random_int(0,100))->addMinutes(random_int(0,1400)) : null,
             'contract' => $faker->filePath(),
             'active' => 1,
         ];

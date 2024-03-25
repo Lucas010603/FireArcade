@@ -25,22 +25,22 @@
         </div>
         <div class="mb-3">
             <label for="contractStart" class="form-label">contract start</label>
-            <input disabled type="datetime-local" id="contractStart" name="contract_start" class="form-control" value="{{$product->contract_start}}">
+            <input disabled type="datetime-local" id="contractStart" name="contract_start" class="form-control"
+                   value="{{$product->contract_start}}">
 
         </div>
 
         <div class="mb-3">
             <label for="contractEnd" class="form-label">contract einde</label>
-            <input disabled type="datetime-local" id="contractEnd" name="contract_end" class="form-control" value="{{$product->contract_end}}">
+            <input disabled type="datetime-local" id="contractEnd" name="contract_end" class="form-control"
+                   value="{{$product->contract_end}}">
         </div>
-
-
 
 
     </form>
     @if(count($errors))
         <div id="form-submit-fail" class="alert alert-danger" role="alert">
-            Product aanmaken mislukt. probeer het nog eens.
+            {{ $errors->first() }}
         </div>
     @endif
 @endsection

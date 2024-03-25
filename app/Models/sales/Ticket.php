@@ -21,19 +21,23 @@ class Ticket extends Model
         });
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne(User::class, "id", "user_id");
     }
 
-    public function status(){
+    public function status()
+    {
         return $this->hasOne(TicketStatus::class, "id", "status_id");
     }
 
-    public function type(){
+    public function type()
+    {
         return $this->hasOne(TicketType::class, "id", "type_id");
     }
 
-    public function product(){
+    public function product()
+    {
         return $this->hasOne(Product::class, "id", "product_id");
     }
 

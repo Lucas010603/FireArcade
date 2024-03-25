@@ -12,7 +12,8 @@ class Customer extends Model
     protected $guarded = [];
     use HasFactory;
 
-    public function type(){
+    public function type()
+    {
         return $this->hasOne(CustomerType::class, "id", "type_id");
     }
 }

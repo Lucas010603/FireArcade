@@ -14,9 +14,9 @@ class Customer extends Model
     protected $table = "customer";
     use HasFactory;
 
-public function Type (): HasOne
-{
-    return $this->HasOne(CustomerType::class, 'id', 'type_id');
-}
+    public function Type(): HasOne
+    {
+        return $this->HasOne(CustomerType::class, 'id', 'type_id');
+    }
 
 }

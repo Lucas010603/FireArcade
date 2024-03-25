@@ -35,6 +35,14 @@ class CustomerController extends Controller
             'postal_code' => 'required',
             'bank_account_number' => 'required',
             'phone_number' => 'nullable',
+        ],[
+            'type_id.required' => 'Selecteer een type',
+            'full_name.required' => 'Vul een naam in',
+            'country.required' => 'vul een land in.',
+            'city.required' => 'vul een stad in.',
+            'postal_code.required' => 'vul een postcode in.',
+            'bank_account_number.required' => 'vul een bank account nummer in',
+            'phone_number.required' => 'vul een telefoonummer in',
         ]);
         Customer::insert($validated);
 
@@ -51,6 +59,14 @@ class CustomerController extends Controller
             'postal_code' => 'required',
             'bank_account_number' => 'required',
             'phone_number' => 'nullable',
+        ],[
+            'type_id.required' => 'Selecteer een type',
+            'full_name.required' => 'Vul een naam in',
+            'country.required' => 'vul een land in.',
+            'city.required' => 'vul een stad in.',
+            'postal_code.required' => 'vul een postcode in.',
+            'bank_account_number.required' => 'vul een bank account nummer in',
+            'phone_number.required' => 'vul een telefoonummer in',
         ]);
 
         Customer::find($id)->update($validated);

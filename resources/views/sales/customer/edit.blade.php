@@ -54,7 +54,7 @@
     </form>
     @if(count($errors))
         <div id="form-submit-fail" class="alert alert-danger" role="alert">
-            Klant toevoegen mislukt. probeer het nog eens.
+            {{ $errors->first() }}
         </div>
     @endif
 @endsection

@@ -17,15 +17,15 @@
         <tbody>
         @foreach ($products as $product)
             <tr>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->serial }}</td>
-                                <td>{{ $product->contract_start }}</td>
-                                <td>{{ $product->contract_end }}</td>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->serial }}</td>
+                <td>{{ $product->contract_start == null ? "" : $product->contract_start->format("d-m-Y") }}</td>
+                <td>{{ $product->contract_end == null ? "" : $product->contract_end->format("d-m-Y") }}</td>
 
-                                <td>
-                                    <a href="{{ route('mechanic.product.view', $product->id) }}" class="btn btn-success">Inzien</a>
+                <td>
+                    <a href="{{ route('mechanic.product.view', $product->id) }}" class="btn btn-success">Inzien</a>
 
-                                </td>
+                </td>
             </tr>
         @endforeach
         </tbody>

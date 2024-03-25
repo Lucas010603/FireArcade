@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::table('user_role')->insert(["name" => 'verkoop medewerker']);
         DB::table('user_role')->insert(["name" => 'monteur']);
 
-        DB::table('ticket_type')->insert(["name" => 'instalatie']);
+        DB::table('ticket_type')->insert(["name" => 'installatie']);
         DB::table('ticket_type')->insert(["name" => 'reparatie']);
 
         DB::table('ticket_status')->insert(["name" => 'open']);

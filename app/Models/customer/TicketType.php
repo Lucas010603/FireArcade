@@ -10,7 +10,8 @@ class TicketType extends Model
     public $timestamps = false;
     protected $table = "ticket_type";
 
-    public function tickets(){
+    public function tickets()
+    {
         $this->hasMany(Ticket::class, 'type_id', 'id');
     }
 }

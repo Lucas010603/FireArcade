@@ -26,10 +26,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|unique:user',
             'name' => 'required',
             'password' => 'required|confirmed',
             'role_id' => 'required'
+        ],[
+            'email.required' => 'vul een email in',
+            'email.email' => 'ingevoerde email is voldoet niet aan de email standaard',
+            'email.unique' => 'de ingevoerde email bestaat al',
+            'name.required' => 'vul een naam in',
+            'password.required' => 'bevestig het wachtwoord',
+            'password.confirmed' => 'bevestig het wachtwoord',
+            'role_id.required' => 'Selecteer een rol'
         ]);
 
         if ($request->has('password')) {
@@ -55,6 +63,11 @@ class UserController extends Controller
                 'email' => 'required|email',
                 'name' => 'required',
                 'role_id' => 'required'
+            ],[
+                'email.required' => 'vul een email in',
+                'email.email' => 'ingevoerde email is voldoet niet aan de email standaard',
+                'name.required' => 'vul een naam in',
+                'role_id.required' => 'Selecteer een rol'
             ]
         );
 

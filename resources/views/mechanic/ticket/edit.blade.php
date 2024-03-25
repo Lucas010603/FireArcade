@@ -63,7 +63,7 @@
                 <select disabled name="product_id" id="product_id" class="form-select" data-error-message="Selecteer een product">
                     <option disabled value="">Product</option>
                     @foreach($product as $products)
-                        <option value="{{ $products->id }}" {{ $ticket->product->id == $products->id ? 'selected' : '' }}>{{ $products->serial }}</option>
+                        <option value="{{ $products->id }}" {{ $ticket->product->id == $products->id ? 'selected' : '' }}>{{$products->name}} ({{ $products->serial }})</option>
                     @endforeach
                 </select>
             </div>
@@ -73,23 +73,25 @@
             </div>
             <div class="mb-3">
                 <label for="action" class="form-label">Uitgevoerd:</label>
-                <textarea {{ $ticket->status_id == 4 || $ticket->status_id == 3 ? 'disabled' : '' }} id="action" name="action" rows="4" class="form-control" style="resize: none">{{ $ticket->actions }}</textarea>
+                <textarea {{ Auth::user()->id == $ticket->user_id && ($ticket->status_id == 1 || $ticket->status_id == 2) ? '' : 'disabled' }} id="action" name="action" rows="4" class="form-control" style="resize: none">{{ $ticket->actions }}</textarea>
             </div>
             <div class="mb-3">
-                @if(Auth::user()->id == $ticket->user_id && $ticket->status_id == 1 || $ticket->status_id == 2)
-                    <button type="submit" class="btn btn-primary me-2">Bijwerken</button>
-                @endif
-                @if($ticket->status_id == 2)
-                    <a class="btn btn-success" onclick="finishTicket({{ $ticket->id }})">Afronden</a>
-                @endif
-                @if($ticket->status_id == 1 || $ticket->status_id == 2)
-                    <a class="btn btn-danger" onclick="deleteTicket({{ $ticket->id }})">Annuleren</a>
+                @if(Auth::user()->id == $ticket->user_id)
+                    @if($ticket->status_id == 1 || $ticket->status_id == 2)
+                        <button type="submit" class="btn btn-primary me-2">Bijwerken</button>
+                    @endif
+                    @if($ticket->status_id == 2)
+                        <a class="btn btn-success" onclick="finishTicket({{ $ticket->id }})">Afronden</a>
+                    @endif
+                    @if($ticket->status_id == 1 || $ticket->status_id == 2)
+                        <a class="btn btn-danger" onclick="deleteTicket({{ $ticket->id }})">Annuleren</a>
+                    @endif
                 @endif
             </div>
         </form>
         @if(count($errors))
             <div id="form-submit-fail" class="alert alert-danger" role="alert">
-                Ticket bewerken mislukt. Probeer het opnieuw.
+                {{ $errors->first() }}
             </div>
         @endif
     </div>
