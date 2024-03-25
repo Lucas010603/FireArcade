@@ -8,7 +8,6 @@
                 <th>Serienummer</th>
                 <th>Contract start datum</th>
                 <th>Contract eind datum</th>
-                <th>Contract</th>
                 <th>Acties</th>
             </tr>
         </thead>
@@ -19,7 +18,6 @@
                 <td>{{ $product->serial }}</td>
                 <td>{{ $product->contract_start?->format("d-m-Y H:i") ?? "n.t.b." }}</td>
                 <td>{{ $product->contract_end?->format("d-m-Y H:i") ?? "n.t.b." }}</td>
-                <td>{{ $product->contract ?? "n.t.b." }}</td>
                     <td>
                         <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-success">Bijwerken</a>
                         <a class="btn btn-danger" onclick="deleteProduct({{$product->id}})">Verwijderen</a>

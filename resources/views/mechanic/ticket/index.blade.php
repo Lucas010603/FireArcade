@@ -35,19 +35,17 @@
                 <td>
 
                     <div class="mb-3 mt-3">
-                        @if($ticket->status_id == 3 || $ticket->status_id == 4)
-                            <a href="{{ route('mechanic.ticket.edit', $ticket->id) }}" class="btn btn-primary">Inzien</a>
-                        @else
-                            @if(Auth::user()->id == $ticket->user_id)
+                        @if($ticket->status_id != 3 && $ticket->status_id != 4 && Auth::user()->id == $ticket->user_id)
                             <a href="{{ route('mechanic.ticket.edit', $ticket->id) }}" class="btn btn-success">Bijwerken</a>
-                        @endif
+                        @else
+                            <a href="{{ route('mechanic.ticket.edit', $ticket->id) }}" class="btn btn-primary">Inzien</a>
                         @endif
                         <div class="mb-3 mt-3">
-                    @if(!$ticket->user)
-                        @if($ticket->status_id == 1)
-                            <a class="btn btn-primary" onclick="acceptTicket({{ $ticket->id }})">Accepteren</a>
+                        @if(!$ticket->user)
+                            @if($ticket->status_id == 1)
+                                <a class="btn btn-primary" onclick="acceptTicket({{ $ticket->id }})">Accepteren</a>
+                            @endif
                         @endif
-                    @endif
                         </div>
                     </div>
 
