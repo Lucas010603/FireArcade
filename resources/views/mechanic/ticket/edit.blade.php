@@ -95,7 +95,7 @@
     </div>
     <script>
         function finishTicket(id) {
-            axios.post(`/mechanic/api/ticket/finish/${id}`)
+            axios.post(`/mechanic/api/ticket/finnish/${id}`)
                 .then(response => {
                     window.location.reload();
                 })

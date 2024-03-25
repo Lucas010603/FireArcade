@@ -43,7 +43,7 @@ class ticketController extends Controller
     {
 
         $data = $request->validate([
-            'action' => 'required',
+            'action' => 'nullable',
         ]);
 
 
