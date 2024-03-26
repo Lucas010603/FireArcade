@@ -9,6 +9,7 @@
             <th scope="col">status</th>
             <th scope="col">serienummer</th>
             <th scope="col">klantnaam</th>
+            <th scope="col">monteur</th>
             <th scope="col">Laatste aanpassing op</th>
             <th scope="col">beschrijving</th>
             <th scope="col">uitgevoerd</th>
@@ -22,11 +23,11 @@
                 $badgeColor = $ticket->status->id == 1 ? "secondary" : ($ticket->status->id == 3 ? "success" : ($ticket->status->id == 4 ? "danger" : "primary"));
             @endphp
             <tr>
-
                 <td>{{ $ticket->type->name }}</td>
                 <td><span class="badge bg-{{$badgeColor}}">{{ $ticket->status->name }}</span></td>
                 <td>{{ $ticket->product->serial }}</td>
                 <td>{{ $ticket->product->customer->full_name ?? '' }}</td>
+                <td>{{ $ticket->user?->name ?? "" }}</td>
                 <td>{{ $ticket->updated_at->format("d-m-Y H:i") }}</td>
                 <td>{{ $ticket->description }}</td>
                 <td>{{ $ticket->actions }}</td>
