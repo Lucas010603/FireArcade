@@ -1,3 +1,7 @@
+# about
+FireArcace was the second practice exam that I made with two ther students in order to practice for my MBO exam.
+This porject is a web application that helps a fictional compony called FireArcade to register and manage clients, products and repair requests comming from customers.
+
 # installation
 
 ### software requirements:
